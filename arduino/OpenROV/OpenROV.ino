@@ -126,6 +126,7 @@ void loop(){
   cmd.get();
   
   DeviceManager::doDeviceLoops(cmd);
+/*
   loops_per_sec++;
   if (Output1000ms.elapsed(1000)) {
     OutputSharedData(); 
@@ -137,7 +138,7 @@ void loop(){
   if (Output100ms.elapsed(100)) {
     OutputNavData();
   }
-  
+*/  
 }
 
 

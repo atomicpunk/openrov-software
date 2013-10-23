@@ -129,6 +129,7 @@ void Controller25::device_loop(Command command){
   } 
   
   if (onesecondtimer.elapsed (1000)){
+/*
     Serial.print(F("BRDT:"));
     Serial.print(celsiusTempRead);
     Serial.print(';');
@@ -153,7 +154,7 @@ void Controller25::device_loop(Command command){
     Serial.print(F("BRDV:"));
     Serial.print(read20Volts(A4));
     Serial.println(';');    
-    
+*/
   }
 
   // send voltage and current

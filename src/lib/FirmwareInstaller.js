@@ -57,7 +57,7 @@ var FirmwareInstaller = function (eventLoop) {
       if (data.toString().indexOf('unpacked') == 0) {
         installer.emit("firmwareinstaller-unpacked", "");
       }
-      if (data.toString().indexOf('compilling') == 0) {
+      if (data.toString().indexOf('compiling') == 0) {
 
       }
       if (data.toString().indexOf('compilled') == 0) {

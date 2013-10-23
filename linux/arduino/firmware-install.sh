@@ -22,7 +22,7 @@ echo unpacking $1
 TMPDIR=`$DIR/firmware-unpack.sh $1` || error_exit "Unpacking Fimrware Failed! Aborting"
 echo unpacked $1 into folder $TMPDIR
 
-echo compilling in $TMPDIR
+echo compiling in $TMPDIR
 BUILD=`$DIR/firmware-build.sh $TMPDIR` || error_exit "Building Firmware Failed! Aborting"
 echo compilled in $TMPDIR
 
