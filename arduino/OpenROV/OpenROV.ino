@@ -33,6 +33,11 @@ Settings settings;
   Lights lights;
 #endif
 
+#if(HAS_STD_SIGNOFLIFE)
+  #include "Signoflife.h"
+  Signoflife sol;
+#endif
+
 #if(HAS_STD_CALIBRATIONLASERS)
   #include "CalibrationLaser.h"
   CalibrationLaser calibrationLaser;
