@@ -17,8 +17,8 @@ echo 0 > /sys/kernel/debug/omap_mux/uart1_txd
 
 # Set Reset pin to HIGH
 echo 7 > /sys/kernel/debug/omap_mux/gpmc_ad0
-echo 32 > /sys/class/gpio/export
-echo "high" > /sys/class/gpio/gpio32/direction
+echo 30 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio32/direction
 
 # Change UART baud rate
 stty -F /dev/ttyO1 115200
