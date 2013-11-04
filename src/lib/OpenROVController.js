@@ -189,7 +189,7 @@ var OpenROVController = function(eventLoop) {
     };
     
     controller.start = function(value) {
-        if (this.NotSafeToControl()) return;
+        //if (this.NotSafeToControl()) return;
         var command = 'start();';
         if(CONFIG.debug_commands) console.error("command", command);
         if(CONFIG.production) serial.write(command);
