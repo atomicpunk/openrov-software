@@ -259,6 +259,7 @@
         <script type='text/javascript' src='js/ArduinoFirmwareViewModel.js'></script>
         <script type='text/javascript' src='js/OpenRovViewModel.js'></script>
         <script type='text/javascript' src="js/gamepad.js"></script>
+        <script type='text/javascript' src="js/simple.js"></script>
         <script type='text/javascript' src="js/keypad.js"></script>
         <script type='text/javascript' src="js/frame.js"></script>
 	<script type='text/javascript' src="js/cockpit.js"></script>
@@ -272,13 +273,15 @@
 	</script>
 
         <script>
+		var thesocket = null;
       		var viewmodel;
           $(function() {
-			
+
             viewmodel = new OpenRovViewModel();
             ko.applyBindings(viewmodel);
 
             var socket = io.connect();
+		thesocket = socket;
             socket.on('status', function (data) {
              viewmodel.updateStatus(data);
             });

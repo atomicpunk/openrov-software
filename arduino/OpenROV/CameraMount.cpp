@@ -42,13 +42,10 @@ void CameraMount::device_loop(Command command){
       tilt_val = command.args[1];
     }
     if (tilt_val != new_tilt){
-      new_tilt = smoothAdjustedCameraPosition(tilt_val,new_tilt);
+      new_tilt = smoothAdjustedCameraPosition(tilt_val, new_tilt);
       tilt.writeMicroseconds(new_tilt);
-    }    
+    }
 }
-
-//void Cape::do_event(Event event){
-//}
 #endif
 
 

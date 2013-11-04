@@ -156,6 +156,9 @@ io.sockets.on('connection', function (socket) {
   socket.emit('videoStarted');
 
 
+    socket.on('raw_command', function(command) {
+        controller.rawCommand(command);
+    });
     socket.on('motor_test', function(controls) {
         controller.sendMotorTest(controls.port, controls.starbord, controls.vertical);
     });
