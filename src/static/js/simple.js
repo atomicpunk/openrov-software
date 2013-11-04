@@ -38,11 +38,24 @@ var Simple = function() {
 	});
 	function init() {
 		var viewmodel = new OpenRovViewModel();
+		var tiltstatus = document.getElementById("tiltstatus");
 		ko.applyBindings(viewmodel);
 
 		self.socket = io.connect();
 		self.socket.on('status', function (data) {
 			viewmodel.updateStatus(data);
+			if(!data.cmd)
+				return;
+			var field = data.cmd.split("(");
+			if(field[0] == "tilt") {
+				var val = parseInt(field[1]);
+				if(val > 1300 && val < 1500)
+					tiltstatus.className = "";
+				else if(val <= 1300)
+					tiltstatus.className = "down";
+				else if(val >= 1500)
+					tiltstatus.className = "up";
+			}
 		});
 
 		setupFrameHandling(self.socket);

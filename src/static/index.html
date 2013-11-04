@@ -3,49 +3,27 @@
 	<head>
 		<title>Todd's OpenROV Cockpit</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.css" rel="stylesheet">
 		<link rel="stylesheet" href="themes/simple/css/style.css">
 	</head>
-
 	<body>
-		<div id="main-row" class="container-fluid full-height">
-		  <div class="row-fluid full-height">
-		    <div class="span9 border full-height" id="outher-videocontainer">
-		      <div id="video-container" class="center" border='1'>
-		        <img src="themes/OpenROV/img/no_camera.jpg" alt="OpenROV" id="video"/>
-		      </div>
-		    </div>
-            <div class="span3 pull-right" style="overflow: auto; height: 100%">
-                <div id="keyboard" class="controller well well-small" >
-                    <img src="themes/OpenROV/img/keyboard.png" class="center">
-                </div>
-                <div id="servoTilt" class="controller well well-small" >
-                    <p>Servo Tilt: <img src="themes/OpenROV/img/servo_tilt.png" data-bind="attr: {style: servoTiltStyle}" class="center"></p>
-                </div>
-                <div id="lights" class="controller well well-small" >
-                    <p><div id="brightnessIndicator" data-bind="attr: {class: brightnessClass}"></div></p>
-                </div>
-                <div id="telemetry" class="controller well well-small" >
-		          <ul data-bind="foreach: rawTelemetry">
-		            <li>
-		              <span data-bind="text: key"></span>
-		              <span data-bind="text: value"></span>
-		            </li>
-		          </ul>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
-        </div>
-
-        <script type='text/javascript' src="js/libs/jquery.min.js"></script>
-        <script type='text/javascript' src="js/libs/jquery-ui.min.js"></script>
-        <script type='text/javascript' src="js/libs/bootstrap.min.js"></script>
-        <script type='text/javascript' src='js/libs/knockout-2.1.0.js'></script>
-        <script type='text/javascript' src='js/utilities.js'></script>
-        <script type='text/javascript' src='js/ArduinoFirmwareViewModel.js'></script>
-        <script type='text/javascript' src='js/OpenRovViewModel.js'></script>
-        <script type='text/javascript' src="js/frame.js"></script>
+		<div id="video-container" class="center">
+			<img src="themes/OpenROV/img/no_camera.jpg" alt="OpenROV" id="video"/>
+		</div>
+		<div id="footerbar">
+			<div id="telemetry">
+				<ul data-bind="foreach: rawTelemetry">
+					<span class="tkey" data-bind="text: key"></span>
+					<span class="tval" data-bind="text: value"></span>
+				</ul>
+			</div>
+		</div>
+		<div id="tiltstatus"></div>
+		<script type='text/javascript' src="js/libs/jquery.min.js"></script>
+		<script type='text/javascript' src='js/libs/knockout-2.1.0.js'></script>
+		<script type='text/javascript' src='js/utilities.js'></script>
+		<script type='text/javascript' src='js/ArduinoFirmwareViewModel.js'></script>
+		<script type='text/javascript' src='js/OpenRovViewModel.js'></script>
+		<script type='text/javascript' src="js/frame.js"></script>
 		<script src="/config.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script type='text/javascript' src="js/simple.js"></script>
