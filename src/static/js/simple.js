@@ -37,8 +37,7 @@ var Simple = function() {
 		e.preventDefault();
 	});
 	function init() {
-		var viewmodel;
-		viewmodel = new OpenRovViewModel();
+		var viewmodel = new OpenRovViewModel();
 		ko.applyBindings(viewmodel);
 
 		self.socket = io.connect();
@@ -46,10 +45,7 @@ var Simple = function() {
 			viewmodel.updateStatus(data);
 		});
 
-		$("#gamepad").hide();
-		$("#keyboard").show();
 		setupFrameHandling(self.socket);
-		var cockpit = new Cockpit(self.socket);
 	}
 	init();
 }
