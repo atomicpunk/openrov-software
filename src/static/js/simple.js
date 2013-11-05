@@ -16,7 +16,31 @@ var Simple = function() {
 		39: { downcmd : "thrust", upcmd : "thrust", pressed : 0 }, // right - right
 		33: { downcmd : "thrust", upcmd : "thrust", pressed : 0 }, // pageup - up
 		34: { downcmd : "thrust", upcmd : "thrust", pressed : 0 }, // pagedwn - dwn
+		17: { pressed : 0 }, // ctrl
+		49: { downcmd : "tdelta", pressed : 0 }, // 1
+		50: { downcmd : "tdelta", pressed : 0 }, // 2
+		51: { downcmd : "tdelta", pressed : 0 }, // 3
+		52: { downcmd : "tdelta", pressed : 0 }, // 4
+		53: { downcmd : "tdelta", pressed : 0 }, // 5
+		54: { downcmd : "tdelta", pressed : 0 }, // 6
+		55: { downcmd : "tdelta", pressed : 0 }, // 7
+		56: { downcmd : "tdelta", pressed : 0 }, // 8
+		57: { downcmd : "tdelta", pressed : 0 }, // 9
 	};
+	function thrustDelta(val) {
+		var dT = 64 + Math.pow(2, val);
+		dT = Math.max(Math.min(dT, 500), 64);
+		var ctrl = self.cmdlist[17].pressed;
+		if(ctrl) {
+			var meter = document.getElementById("vmeter");
+			meter.className = "meter bar"+(val+1);
+			self.VdT = dT
+		} else {
+			var meter = document.getElementById("hmeter");
+			meter.className = "meter bar"+(val+1);
+			self.HdT = dT
+		}
+	}
 	function thrust() {
 		var f = self.cmdlist[38].pressed;
 		var b = self.cmdlist[40].pressed;
@@ -33,21 +57,21 @@ var Simple = function() {
 		var star = 1500;
 		var port = 1500;
 		if(l && !r && !f && !b) {
-			port = 1000; star = 2000;
+			port -= self.HdT; star += self.HdT;
 		} else if(!l && r && !f && !b) {
-			port = 2000; star = 1000;
+			port += self.HdT; star -= self.HdT;
 		} else if(l && !r && f && !b) {
-			port = 1500; star = 2000;
+			star += self.HdT;
 		} else if(!l && r && f && !b) {
-			port = 2000; star = 1500;
+			port += self.HdT;
 		} else if(l && !r && !f && b) {
-			port = 1500; star = 1000;
+			star -= self.HdT;
 		} else if(!l && r && !f && b) {
-			port = 1000; star = 1500;
+			port -= self.HdT;
 		} else if(!l && !r && f && !b) {
-			port = 2000; star = 2000;
+			port += self.HdT; star += self.HdT;
 		} else if(!l && !r && !f && b) {
-			port = 1000; star = 1000;
+			port -= self.HdT; star -= self.HdT;
 		}
 
 		var cmd = ";go("+star+","+vert+","+port+");"
@@ -66,6 +90,8 @@ var Simple = function() {
 			self.socket.emit('raw_command', cmd);
 		else if(cmd == "thrust")
 			thrust();
+		else if(cmd == "tdelta")
+			thrustDelta(e.keyCode - 48);
 		e.preventDefault();
 	});
 	document.body.addEventListener("keyup", function(e) {

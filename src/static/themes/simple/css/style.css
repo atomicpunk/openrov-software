@@ -113,6 +113,31 @@ body {
 #vertmotor {right: 126px;}
 #portmotor {right: 168px;}
 
+.meter {
+  position: absolute;
+  height:32px;
+  width: 119px;
+  bottom: 0;
+  background: url(../img/bar10.png) no-repeat;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: white;
+  font: 35px/100% Arial;
+  text-indent:-30px;
+}
+.meter.bar1 {background: url(../img/bar1.png) no-repeat;}
+.meter.bar2 {background: url(../img/bar2.png) no-repeat;}
+.meter.bar3 {background: url(../img/bar3.png) no-repeat;}
+.meter.bar4 {background: url(../img/bar4.png) no-repeat;}
+.meter.bar5 {background: url(../img/bar5.png) no-repeat;}
+.meter.bar6 {background: url(../img/bar6.png) no-repeat;}
+.meter.bar7 {background: url(../img/bar7.png) no-repeat;}
+.meter.bar8 {background: url(../img/bar8.png) no-repeat;}
+.meter.bar9 {background: url(../img/bar9.png) no-repeat;}
+.meter.bar10 {background: url(../img/bar10.png) no-repeat;}
+#vmeter {right: 210px;}
+#hmeter {right: 370px;}
+
 .tkey {
   text-transform: uppercase;
   color: blue;
