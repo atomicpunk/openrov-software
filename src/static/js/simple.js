@@ -39,6 +39,7 @@ var Simple = function() {
 	function init() {
 		var viewmodel = new OpenRovViewModel();
 		var tiltstatus = document.getElementById("tiltstatus");
+		var lightstatus = document.getElementById("lighton");
 		ko.applyBindings(viewmodel);
 
 		self.socket = io.connect();
@@ -55,6 +56,14 @@ var Simple = function() {
 					tiltstatus.className = "down";
 				else if(val >= 1500)
 					tiltstatus.className = "up";
+			} else if(field[0] == "light") {
+				var val = parseInt(field[1]);
+				if(val > 0 && val < 156)
+					lightstatus.className = "lightstatus half";
+				else if(val <= 0)
+					lightstatus.className = "lightstatus off";
+				else if(val >= 156)
+					lightstatus.className = "lightstatus full";
 			}
 		});
 

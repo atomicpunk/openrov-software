@@ -59,6 +59,25 @@ body {
   -webkit-transform: rotate(45deg);
 }
 
+.lightstatus {
+  position: absolute;
+  height:32px;
+  width: 32px;
+  right: 42px;
+  bottom: 0;
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+#lightoff {background-image: url(../img/light_bulb_off.png);}
+#lighton {background-image: url(../img/light_bulb_on.png);}
+#lighton.full {opacity: 1;}
+#lighton.half {opacity: 0.5;}
+#lighton.off {opacity: 0;}
+
 .tkey {
   text-transform: uppercase;
   color: blue;
