@@ -40,6 +40,10 @@ var Simple = function() {
 		var viewmodel = new OpenRovViewModel();
 		var tiltstatus = document.getElementById("tiltstatus");
 		var lightstatus = document.getElementById("lighton");
+		var motorstatus = [];
+		motorstatus[0] = document.getElementById("starmotor");
+		motorstatus[1] = document.getElementById("vertmotor");
+		motorstatus[2] = document.getElementById("portmotor");
 		ko.applyBindings(viewmodel);
 
 		self.socket = io.connect();
@@ -64,6 +68,19 @@ var Simple = function() {
 					lightstatus.className = "lightstatus off";
 				else if(val >= 156)
 					lightstatus.className = "lightstatus full";
+			} else if(field[0] == "go") {
+				var val = field[1].split(",");
+				if(val.length != 3)
+					return;
+				for(var i = 0; i < 3; i++) {
+					var thrust = parseInt(val[i]);
+					if(thrust == 1500)
+						motorstatus[i].className = "motor";
+					else if(thrust < 1500)
+						motorstatus[i].className = "motor reverse";
+					else if(thrust > 1500)
+						motorstatus[i].className = "motor forward";
+				}
 			}
 		});
 

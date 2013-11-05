@@ -78,6 +78,41 @@ body {
 #lighton.half {opacity: 0.5;}
 #lighton.off {opacity: 0;}
 
+@-webkit-keyframes forward_anim {
+    0% { -webkit-transform:rotate(0deg); } 
+    100% { -webkit-transform:rotate(360deg); } 
+}
+
+@-webkit-keyframes reverse_anim {
+    0% { -webkit-transform:rotate(0deg); } 
+    100% { -webkit-transform:rotate(-360deg); } 
+}
+
+.motor {
+  position: absolute;
+  height:32px;
+  width: 32px;
+  bottom: 0;
+  background-image: url(../img/screw.png);
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.motor.forward {
+  background-image: url(../img/screwfwd.png);
+  -webkit-animation: forward_anim 1s linear 0s infinite;
+}
+.motor.reverse {
+  background-image: url(../img/screwrvs.png);
+  -webkit-animation: reverse_anim 1s linear 0s infinite;
+}
+
+#starmotor {right: 84px;}
+#vertmotor {right: 126px;}
+#portmotor {right: 168px;}
+
 .tkey {
   text-transform: uppercase;
   color: blue;
