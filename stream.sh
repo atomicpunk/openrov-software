@@ -19,6 +19,5 @@ if [ $# -ge 3 ]; then
 	PORT=$1
 fi
 
-./mjpg_streamer -i "/usr/local/lib/input_uvc.so -d /dev/video0 -r $RES -f $FPS" \
--o "/usr/local/lib/output_http.so -p $PORT" \
--o "/usr/local/lib/output_file.so"
+/usr/bin/mjpg_streamer -i "/usr/lib/input_uvc.so -d /dev/video0 -r $RES -f $FPS" \
+-o "/usr/lib/output_http.so -p $PORT"
